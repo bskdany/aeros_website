@@ -37,7 +37,20 @@ function App() {
 
   return (
     <>
-      <h1>æros</h1>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-evenly',
+      height: '100vh',
+      minHeight: '100vh',
+      }}>
+
+      <div>
+        <div style={{fontSize: '10em'}}>æros</div>
+        <div style={{fontSize: '2em'}}>Because your attention is valuable</div>
+      </div>
+
+
       <div className="waitlist-form">
         {!submitted ? (
           <form onSubmit={handleSubmit}>
@@ -53,12 +66,13 @@ function App() {
                 borderRadius: '6px',
                 border: '1px solid #ccc',
                 marginRight: '8px',
+                backgroundColor: 'white',
                 width: '240px',
                 outline: 'none',
               }}
               onFocus={(e) => {
                 e.target.style.borderColor = '#4f46e5';
-                e.target.style.boxShadow = '0 0 0 1px rgba(79, 70, 229, 0.2)';
+                e.target.style.boxShadow = '0 0 0 1px rgba(255, 255, 255, 0.2)';
               }}
               onBlur={(e) => {
                 e.target.style.borderColor = '#ccc';
@@ -76,6 +90,7 @@ function App() {
                 backgroundColor: '#4f46e5',
                 color: 'white',
                 cursor: loading ? 'wait' : 'pointer',
+                boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
               }}
             >
               {loading ? 'Joining...' : 'Join Waitlist'}
@@ -88,6 +103,9 @@ function App() {
         )}
         {message && !submitted && <p className="message">{message}</p>}
       </div>
+
+    </div>
+     
     </>
   )
 }
