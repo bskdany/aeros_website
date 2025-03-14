@@ -115,7 +115,7 @@ function Waitlist() {
   }
 
   return (
-<div className="waitlist-form" style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+<div className="waitlist-form" style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
         {!submitted ? (
           <form onSubmit={handleSubmit}>
             <input
@@ -125,6 +125,7 @@ function Waitlist() {
               placeholder="Enter your email"
               required
               style={{
+                boxSizing: 'border-box',
                 padding: '12px 16px',
                 fontSize: '16px',
                 borderRadius: '6px',
@@ -132,14 +133,10 @@ function Waitlist() {
                 marginRight: '8px',
                 backgroundColor: 'white',
                 outline: 'none',
+                color: "black"
               }}
               onFocus={(e) => {
                 e.target.style.borderColor = '#4f46e5';
-                e.target.style.boxShadow = '0 0 0 1px rgba(255, 255, 255, 0.2)';
-              }}
-              onBlur={(e) => {
-                e.target.style.borderColor = '#ccc';
-                e.target.style.boxShadow = 'none';
               }}
             />
             <button 
@@ -151,7 +148,6 @@ function Waitlist() {
                 borderRadius: '6px',
                 border: 'none',
                 backgroundColor: '#4f46e5',
-                color: 'white',
                 cursor: loading ? 'wait' : 'pointer',
                 boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
               }}
