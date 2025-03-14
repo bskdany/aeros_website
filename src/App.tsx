@@ -39,42 +39,19 @@ function App() {
     <>
     <div style={{
       display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-evenly',
-      height: '100vh',
-      minHeight: '100vh',
+      flexDirection: 'row',
+      justifyItems: 'center',
+      justifyContent: 'center',
+      gap: '10vw',
       }}>
 
-      <div style={{minHeight: '40vh'}}>
-        <div style={{fontSize: '10em'}}>æros</div>
-        <div style={{fontSize: '1.4em'}}>Because your attention is valuable</div>
-      </div>
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'end', justifyContent: 'space-around'}}>
+        <div> 
+          <div style={{fontSize: '10em'}}>æros</div>
+          <div style={{fontSize: '1.4em'}}>Because your attention is valuable</div>
+        </div>
 
-      <div style={{
-        height: '80vh',
-        display: 'flex',
-        justifyContent: 'center',
-        margin: '20px auto'
-      }}>
-        <video 
-          autoPlay 
-          muted 
-          loop
-          playsInline
-          style={{
-            height: '100%',  // Take full height of container
-            maxHeight: '100%',
-            objectFit: 'contain',  // Maintain aspect ratio
-            borderRadius: '8px',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
-          }}
-        >
-          <source src="/demo.webm" type="video/webm" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-
-      <div className="waitlist-form" style={{minHeight: '20vh', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+        <div className="waitlist-form" style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
         {!submitted ? (
           <form onSubmit={handleSubmit}>
             <input
@@ -125,6 +102,33 @@ function App() {
         )}
         {message && !submitted && <p className="message">{message}</p>}
       </div>
+      </div>
+     
+
+      <div style={{
+        height: '70vh',
+        display: 'flex',
+        justifyContent: 'center',
+      }}>
+        <video 
+          autoPlay 
+          muted 
+          loop
+          playsInline
+          style={{
+            height: '100%',  // Take full height of container
+            maxHeight: '100%',
+            objectFit: 'contain',  // Maintain aspect ratio
+            borderRadius: '8px',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
+          }}
+        >
+          <source src="/demo.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      
 
     </div>
      
