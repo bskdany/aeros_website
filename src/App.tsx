@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 
 // either row level security works or I'm cooked 
@@ -9,6 +9,85 @@ const supabase = createClient(
 );
 
 function App() {
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  // Add window resize listener to detect desktop vs mobile
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 768)
+    }
+    
+    checkScreenSize()
+    window.addEventListener('resize', checkScreenSize)
+    
+    return () => window.removeEventListener('resize', checkScreenSize)
+  }, [])
+
+
+  if(isDesktop){
+    return (
+        <>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyItems: 'center',
+          justifyContent: 'center',
+          gap: '10vw',
+          }}>
+
+          <div style={{display: 'flex', flexDirection: 'column', alignItems: 'end', justifyContent: 'space-around'}}>
+            <div> 
+              <div style={{fontSize: '10em'}}>æros</div>
+              <div style={{fontSize: '1.4em'}}>Because your attention is valuable</div>
+            </div>
+            <Waitlist/>
+          </div>
+        
+          <div style={{
+            height: '70vh',
+            display: 'flex',
+            justifyContent: 'center',
+          }}>
+            <Video/>
+          </div>
+        </div>
+        </>
+      )
+  }
+  else{
+    return (
+        <>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyItems: 'center',
+          justifyContent: 'center',
+          gap: '10vw',
+          }}>
+
+          <div>
+            <div style={{fontSize: '10em'}}>æros</div>
+            <div style={{fontSize: '1.4em'}}>Because your attention is valuable</div>
+          </div>
+        
+          <div style={{
+            height: '70vh',
+            display: 'flex',
+            justifyContent: 'center',
+          }}>
+            <Video/>
+          </div>
+
+          <Waitlist/>
+
+        </div>
+        </>
+      )
+  }
+  
+}
+
+function Waitlist() {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(false)
@@ -36,22 +115,7 @@ function App() {
   }
 
   return (
-    <>
-    <div style={{
-      display: 'flex',
-      flexDirection: 'row',
-      justifyItems: 'center',
-      justifyContent: 'center',
-      gap: '10vw',
-      }}>
-
-      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'end', justifyContent: 'space-around'}}>
-        <div> 
-          <div style={{fontSize: '10em'}}>æros</div>
-          <div style={{fontSize: '1.4em'}}>Because your attention is valuable</div>
-        </div>
-
-        <div className="waitlist-form" style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+<div className="waitlist-form" style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
         {!submitted ? (
           <form onSubmit={handleSubmit}>
             <input
@@ -101,15 +165,11 @@ function App() {
           </div>
         )}
         {message && !submitted && <p className="message">{message}</p>}
-      </div>
-      </div>
-     
+      </div>)
+}
 
-      <div style={{
-        height: '70vh',
-        display: 'flex',
-        justifyContent: 'center',
-      }}>
+function Video(){
+  return (
         <video 
           autoPlay 
           muted 
@@ -125,15 +185,7 @@ function App() {
         >
           <source src="/demo.webm" type="video/webm" />
           Your browser does not support the video tag.
-        </video>
-      </div>
-
-      
-
-    </div>
-     
-    </>
-  )
+        </video>)
 }
 
 export default App;
