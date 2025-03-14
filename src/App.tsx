@@ -9,19 +9,47 @@ const supabase = createClient(
 );
 
 function App() {
-  const [isDesktop, setIsDesktop] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(() => {
+    // Safe check for window object (for SSR compatibility)
+    if (typeof window !== 'undefined') {
+      return window.matchMedia('(min-width: 768px)').matches;
+    }
+    return false; // Default to mobile view when window isn't available
+  });
 
-  // Add window resize listener to detect desktop vs mobile
+  // Improved window resize listener using matchMedia
   useEffect(() => {
-    const checkScreenSize = () => {
-      setIsDesktop(window.innerWidth >= 768)
+    // Skip if window is not available
+    if (typeof window === 'undefined') return;
+    
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    
+    // Set initial value (in case the initial state calculation was wrong)
+    setIsDesktop(mediaQuery.matches);
+    
+    // Define handler function
+    const handleResize = (e: MediaQueryListEvent) => {
+      setIsDesktop(e.matches);
+    };
+    
+    // Add event listener with browser compatibility
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handleResize);
+    } else {
+      // Fallback for older browsers
+      mediaQuery.addListener(handleResize);
     }
     
-    checkScreenSize()
-    window.addEventListener('resize', checkScreenSize)
-    
-    return () => window.removeEventListener('resize', checkScreenSize)
-  }, [])
+    // Cleanup
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', handleResize);
+      } else {
+        // Fallback for older browsers
+        mediaQuery.removeListener(handleResize);
+      }
+    };
+  }, []);
 
 
   if(isDesktop){
