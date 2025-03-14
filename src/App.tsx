@@ -45,13 +45,36 @@ function App() {
       minHeight: '100vh',
       }}>
 
-      <div>
+      <div style={{minHeight: '40vh'}}>
         <div style={{fontSize: '10em'}}>æros</div>
-        <div style={{fontSize: '2em'}}>Because your attention is valuable</div>
+        <div style={{fontSize: '1.4em'}}>Because your attention is valuable</div>
       </div>
 
+      <div style={{
+        height: '80vh',
+        display: 'flex',
+        justifyContent: 'center',
+        margin: '20px auto'
+      }}>
+        <video 
+          autoPlay 
+          muted 
+          loop
+          playsInline
+          style={{
+            height: '100%',  // Take full height of container
+            maxHeight: '100%',
+            objectFit: 'contain',  // Maintain aspect ratio
+            borderRadius: '8px',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
+          }}
+        >
+          <source src="/demo.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-      <div className="waitlist-form">
+      <div className="waitlist-form" style={{minHeight: '20vh', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
         {!submitted ? (
           <form onSubmit={handleSubmit}>
             <input
@@ -67,7 +90,6 @@ function App() {
                 border: '1px solid #ccc',
                 marginRight: '8px',
                 backgroundColor: 'white',
-                width: '240px',
                 outline: 'none',
               }}
               onFocus={(e) => {
