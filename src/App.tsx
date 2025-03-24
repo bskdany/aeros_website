@@ -15,7 +15,7 @@ function App() {
         <div className="content-section">
           <div> 
             <div className="title">Go Grind</div>
-            <div className="subtitle">Because your attention is valuable</div>
+            <div className="subtitle">Because honestly wtf</div>
           </div>
           <Waitlist />
         </div>
