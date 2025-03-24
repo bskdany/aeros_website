@@ -127,4 +127,8 @@
     align-items: flex-end;
     justify-content: space-around;
   }
+
+  .video-container {
+    height: 80vh;
+  }
 }
