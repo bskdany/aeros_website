@@ -18,6 +18,15 @@ function App() {
             <div className="subtitle">Because honestly wtf</div>
           </div>
           <Waitlist />
+          <div className="social-links">
+            <a 
+              href="https://twitter.com/GoGrind_app" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              Check out our twitter! 
+            </a>
+          </div>
         </div>
       
         <div className="video-container">

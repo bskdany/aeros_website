@@ -57,10 +57,20 @@
 }
 
 .waitlist-form form {
+  margin-top: 2em;
   display: flex;
   flex-direction: row;
   width: 100%;
   flex-wrap: nowrap;
+}
+
+.social-links {
+  display: flex;
+  height: 2em;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
 }
 
 .waitlist-form input[type="email"] {
