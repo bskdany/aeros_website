@@ -4,10 +4,11 @@
 }
 
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  overflow: hidden;
 }
 
 .logo {
@@ -44,4 +45,86 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Waitlist form styles */
+.waitlist-form {
+  display: flex;
+  width: 100%;
+  max-width: 500px;
+  margin: 1rem auto;
+}
+
+.waitlist-form form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.waitlist-form input[type="email"] {
+  flex: 1;
+  min-width: 0; /* Prevents input from overflowing on small screens */
+  margin-right: 8px;
+}
+
+.waitlist-form button {
+  white-space: nowrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .waitlist-form form {
+    width: 100%;
+  }
+  
+  .waitlist-form input[type="email"] {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+  
+  .waitlist-form button {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+}
+
+/* Add these new styles to your existing App.css */
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10vw;
+}
+
+.content-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 5em;
+}
+
+.subtitle {
+  font-size: 1.4em;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Media query for desktop */
+@media (min-width: 768px) {
+  .app-container {
+    flex-direction: row;
+  }
+
+  .content-section {
+    align-items: flex-end;
+    justify-content: space-around;
+  }
 }
