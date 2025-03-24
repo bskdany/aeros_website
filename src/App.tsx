@@ -20,7 +20,7 @@ function App() {
           <Waitlist />
           <div className="social-links">
             <a 
-              href="https://twitter.com/GoGrind_app" 
+              href="https://twitter.com/StopBeingCooked" 
               target="_blank" 
               rel="noopener noreferrer"
             >
