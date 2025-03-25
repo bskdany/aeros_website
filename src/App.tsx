@@ -15,7 +15,7 @@ function App() {
         <div className="content-section">
           <div> 
             <div className="title">Stop Being Cooked</div>
-            <div className="subtitle">Because honestly wtf</div>
+            <div className="subtitle">Blocking short form videos, anywhere</div>
           </div>
           <Waitlist />
           <div className="social-links">
